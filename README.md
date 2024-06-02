@@ -24,3 +24,12 @@ yarn add @flagsync/react-sdk
 # pnpm
 pnpm add @flagsync/react-sdk
 ```
+
+## Getting Started
+
+Refer to the [SDK documentation](https://docs.flagsync.com/sdks/react) for more information on how to use this library.
+
+
+## Node / JavaScript
+
+This SDK wraps the [JavaScript SDK](https://github.com/flagsync/javascript-client) for smoother integration with React applications. However, if you're building a non-React application for Node.js or the web browser, you should use our isomorphic [JavaScript SDK](https://github.com/flagsync/javascript-client) instead.
