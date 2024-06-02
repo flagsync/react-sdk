@@ -9,16 +9,6 @@ This SDK allows you to interact with the FlagSync API to retrieve feature flags 
 
 
 ---
-- [Compatibility](#compatibility)
-- [Installation](#installation)
-- [Getting Started](#getting-started)
-  - [Events](#events)
-  - [Promises & async/await](#promises--asyncawait)
-- [Get flag values](#get-flag-values)
-- [Flag updates](#flag-updates)
-- [Bootstrapping](#bootstrapping)
-- [Additional configurations](#additional-configurations)
-- [Vite](#vite)
 
 ---
 ## Compatibility

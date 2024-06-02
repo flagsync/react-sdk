@@ -1,5 +1,5 @@
 {
-  "name": "@flagsync/react-client",
+  "name": "@flagsync/react-sdk",
   "version": "0.0.1",
   "description": "FlagSync React SDK",
   "author": "Mike Chabot",
