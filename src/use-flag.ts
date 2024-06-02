@@ -9,7 +9,7 @@ export type UseFlagValue<T> = T | 'control';
  * @param flagKey
  * @param defaultValue
  */
-export function useFlag<T>(flagKey: string, defaultValue: T): UseFlagValue<T> {
+export function useFlag<T>(flagKey: string, defaultValue?: T): UseFlagValue<T> {
   const client = useFlagSyncClient();
 
   return useMemo(() => {
