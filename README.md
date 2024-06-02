@@ -10,7 +10,7 @@ That's why we developed an affordable, user-friendly platform that delivers the 
 ---
 
 ## Compatibility
-This SDK relies on React's Context API and therefore requires React 16.3 or higher.
+This SDK relies on the React Context API and therefore requires React 16.3 or higher.
 
 ## Installation
 
