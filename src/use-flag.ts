@@ -1,3 +1,5 @@
+import { useMemo } from 'react';
+
 import { useFlagSyncClient } from '~sdk/use-flagsync-client';
 
 export type UseFlagValue<T> = T | 'control';
@@ -9,5 +11,8 @@ export type UseFlagValue<T> = T | 'control';
  */
 export function useFlag<T>(flagKey: string, defaultValue: T): UseFlagValue<T> {
   const client = useFlagSyncClient();
-  return client.flag<T>(flagKey, defaultValue);
+
+  return useMemo(() => {
+    return client.flag(flagKey, defaultValue);
+  }, [client.lastUpdated, flagKey, defaultValue]);
 }

@@ -1,4 +1,5 @@
 import { FsFlagSet } from '@flagsync/js-sdk';
+import { useMemo } from 'react';
 
 import { useFlagSyncClient } from '~sdk/use-flagsync-client';
 
@@ -8,5 +9,8 @@ import { useFlagSyncClient } from '~sdk/use-flagsync-client';
  */
 export function useFlags(defaultValues: FsFlagSet = {}): FsFlagSet {
   const client = useFlagSyncClient();
-  return client.flags(defaultValues);
+
+  return useMemo(() => {
+    return client.flags(defaultValues);
+  }, [client.lastUpdated]);
 }
