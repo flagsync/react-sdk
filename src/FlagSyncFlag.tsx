@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, memo, useMemo } from 'react';
 
 import { useFlagSyncProviderContext } from '~sdk/flagsync-provider';
 import { UseFlagValue, useFlag } from '~sdk/use-flag';
@@ -25,7 +25,7 @@ export type FlagSyncFlagProps<T> = {
  * @param children
  * @constructor
  */
-export function FlagSyncFlag<T>({
+export const FlagSyncFlag = memo(function FlagSyncFlag<T>({
   flagKey,
   defaultValue,
   children,
@@ -33,9 +33,14 @@ export function FlagSyncFlag<T>({
   const { client } = useFlagSyncProviderContext();
   const value = useFlag<T>(flagKey, defaultValue);
 
-  return children({
-    value,
-    isReady: client.isReady,
-    isReadyFromStore: client.isReadyFromStore,
-  });
-}
+  const childrenProps = useMemo(
+    () => ({
+      value,
+      isReady: client.isReady,
+      isReadyFromStore: client.isReadyFromStore,
+    }),
+    [value, client.isReady, client.isReadyFromStore],
+  );
+
+  return children(childrenProps);
+});
