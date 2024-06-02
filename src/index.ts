@@ -8,3 +8,14 @@ export { useFlagSyncProviderContext } from './flagsync-provider';
 export { FlagSyncProvider } from './flagsync-provider';
 
 export type { FlagProviderContextValue } from './flagsync-provider';
+
+export type {
+  FsFlagSet,
+  CustomAttributes,
+  CustomAttributeValue,
+  FlagSyncConfig,
+  FsFlagValue,
+  LogLevel,
+} from '@flagsync/js-sdk';
+
+export { SyncType, StorageType } from '@flagsync/js-sdk';
