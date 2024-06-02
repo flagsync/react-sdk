@@ -1,7 +1,6 @@
 import { FsFlagSet } from '@flagsync/js-sdk';
 import { ReactNode, useMemo } from 'react';
 
-import { useFlagSyncProviderContext } from '~sdk/flagsync-provider';
 import { useFlags } from '~sdk/use-flags';
 
 export type FlagSyncFlagProps = {
@@ -25,16 +24,15 @@ export type FlagSyncFlagProps = {
  * @constructor
  */
 export function FlagSyncFlags({ defaultValues, children }: FlagSyncFlagProps) {
-  const { client } = useFlagSyncProviderContext();
-  const flags = useFlags(defaultValues);
+  const { flags, isReady, isReadyFromStore } = useFlags(defaultValues);
 
   const childrenProps = useMemo(() => {
     return {
       flags,
-      isReady: client.isReady,
-      isReadyFromStore: client.isReadyFromStore,
+      isReady,
+      isReadyFromStore,
     };
-  }, [flags, client.isReady, client.isReadyFromStore]);
+  }, [flags, isReady, isReadyFromStore]);
 
   return children(childrenProps);
 }
