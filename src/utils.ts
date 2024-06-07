@@ -1,8 +1,8 @@
-import { FlagSyncConfig, FlagSyncFactory } from '@flagsync/js-sdk';
+import { FlagSyncFactory, FsConfig } from '@flagsync/js-sdk';
 
 import { DecoratedFsClient } from '~sdk/types';
 
-export function getFlagSyncClient(config: FlagSyncConfig): DecoratedFsClient {
+export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
   const factory = FlagSyncFactory(config);
   const client = factory.client() as DecoratedFsClient;
 

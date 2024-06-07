@@ -13,7 +13,7 @@ export type {
   FsFlagSet,
   CustomAttributes,
   CustomAttributeValue,
-  FlagSyncConfig,
+  FsConfig,
   FsFlagValue,
   LogLevel,
 } from '@flagsync/js-sdk';

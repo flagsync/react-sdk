@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useContext, ReactNode } from 'react';
-import { FlagSyncConfig } from '@flagsync/js-sdk';
+import { FsConfig } from '@flagsync/js-sdk';
 
 import { getFlagSyncClient } from "~sdk/utils";
 import { DecoratedFsClient } from "~sdk/types";
@@ -15,7 +15,7 @@ export const FlagSyncProvider = ({
   config,
 }: {
   children: ReactNode;
-  config: FlagSyncConfig;
+  config: FsConfig;
 }) => {
   const client = getFlagSyncClient(config);
 
