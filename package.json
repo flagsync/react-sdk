@@ -1,7 +1,7 @@
 {
   "name": "@flagsync/react-sdk",
   "version": "0.1.0",
-  "description": "FlagSync React SDK",
+  "description": "FlagSync SDK for React",
   "author": "Mike Chabot",
   "license": "Apache-2.0",
   "repository": {
@@ -46,7 +46,7 @@
     "react-dom": ">=16.3.0"
   },
   "dependencies": {
-    "@flagsync/js-sdk": "^0.3.0"
+    "@flagsync/js-sdk": "^0.3.2"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -60,6 +60,7 @@
     "prettier": "^3.2.5",
     "react": ">= 16.3.0",
     "react-dom": ">= 16.3.0",
+    "replace-in-file": "^7.2.0",
     "tsup": "^8.0.2",
     "typescript": "^5.4.2",
     "vite": "^5.2.12",
