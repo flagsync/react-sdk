@@ -1,4 +1,4 @@
-import React, { useEffect, createContext, useContext, ReactNode } from 'react';
+import React, { useEffect, createContext, useContext, ReactNode, useRef, useState } from 'react';
 import { FsConfig } from '@flagsync/js-sdk';
 
 import { getFlagSyncClient } from "~sdk/utils";
@@ -17,16 +17,28 @@ export const FlagSyncProvider = ({
   children: ReactNode;
   config: FsConfig;
 }) => {
-  const client = getFlagSyncClient(config);
+  const clientRef = useRef<ReturnType<typeof getFlagSyncClient> | null>(null);
+  const [_, setMounted] = useState(false);
+
+  if (clientRef.current === null) {
+    clientRef.current = getFlagSyncClient(config);
+  }
+
 
   useEffect(() => {
+    if (clientRef.current === null) {
+      clientRef.current = getFlagSyncClient(config);
+      setMounted((prev) => !prev);
+    }
+
     return () => {
-      client.kill();
+      clientRef.current?.kill();
+      clientRef.current = null;
     };
   }, []);
 
   return (
-    <FlagSyncContext.Provider value={{ client }}>
+    <FlagSyncContext.Provider value={{ client: clientRef.current }}>
       {children}
     </FlagSyncContext.Provider>
   );
