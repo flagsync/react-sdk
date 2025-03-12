@@ -18,4 +18,4 @@ export type {
   LogLevel,
 } from '@flagsync/js-sdk';
 
-export { SyncType, StorageType } from '@flagsync/js-sdk';
+export { SyncType, StorageType, FsEvent } from '@flagsync/js-sdk';
