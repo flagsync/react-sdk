@@ -1,3 +1,4 @@
+import { FsClient } from '@flagsync/js-sdk';
 import { useEffect, useState } from 'react';
 
 import { useFlagSyncProviderContext } from '~sdk/flagsync-provider';
@@ -23,14 +24,14 @@ export function useFlagSyncClient(): DecoratedFsClient {
       setLastUpdated(client.lastUpdated);
     };
 
-    client.on(client.Event.SDK_UPDATE, onUpdate);
-    client.once(client.Event.SDK_READY, onUpdate);
-    client.once(client.Event.SDK_READY_FROM_STORE, onUpdate);
+    client.on(FsClient.Event.SDK_UPDATE, onUpdate);
+    client.once(FsClient.Event.SDK_READY, onUpdate);
+    client.once(FsClient.Event.SDK_READY_FROM_STORE, onUpdate);
 
     return () => {
-      client.off(client.Event.SDK_UPDATE, onUpdate);
-      client.off(client.Event.SDK_READY, onUpdate);
-      client.off(client.Event.SDK_READY_FROM_STORE, onUpdate);
+      client.off(FsClient.Event.SDK_UPDATE, onUpdate);
+      client.off(FsClient.Event.SDK_READY, onUpdate);
+      client.off(FsClient.Event.SDK_READY_FROM_STORE, onUpdate);
     };
   }, [client]);
 
