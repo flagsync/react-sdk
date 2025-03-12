@@ -1,4 +1,5 @@
-import { FlagSyncFactory, FsClient, FsConfig } from '@flagsync/js-sdk';
+import { FlagSyncFactory, FsEvent } from '@flagsync/js-sdk';
+import type { FsConfig } from '@flagsync/js-sdk';
 
 import { DecoratedFsClient } from '~sdk/types';
 
@@ -33,9 +34,9 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
     setLastUpdated();
   }
 
-  client.on(FsClient.Event.SDK_UPDATE, setLastUpdated);
-  client.on(FsClient.Event.SDK_READY, onReady);
-  client.on(FsClient.Event.SDK_READY_FROM_STORE, onReadyFromStore);
+  client.on(FsEvent.SDK_UPDATE, setLastUpdated);
+  client.on(FsEvent.SDK_READY, onReady);
+  client.on(FsEvent.SDK_READY_FROM_STORE, onReadyFromStore);
 
   return client;
 }

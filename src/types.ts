@@ -1,4 +1,4 @@
-import { FsClient } from '@flagsync/js-sdk';
+import type { FsClient } from '@flagsync/js-sdk';
 
 export interface DecoratedFsClient extends FsClient {
   lastUpdated: number;

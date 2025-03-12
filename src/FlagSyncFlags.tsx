@@ -1,4 +1,4 @@
-import { FsFlagSet } from '@flagsync/js-sdk';
+import type { FsFlagSet } from '@flagsync/js-sdk';
 import { ReactNode, useMemo } from 'react';
 
 import { useFlags } from '~sdk/use-flags';

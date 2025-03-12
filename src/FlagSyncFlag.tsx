@@ -1,6 +1,7 @@
 import { ReactNode, useMemo } from 'react';
 
-import { UseFlagValue, useFlag } from '~sdk/use-flag';
+import { useFlag } from '~sdk/use-flag';
+import type { UseFlagValue } from '~sdk/use-flag';
 
 export type FlagSyncFlagProps<T> = {
   flagKey: string;

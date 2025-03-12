@@ -1,5 +1,5 @@
 import React, { useEffect, createContext, useContext, ReactNode, useRef, useState } from 'react';
-import { FsConfig } from '@flagsync/js-sdk';
+import type { FsConfig } from '@flagsync/js-sdk';
 
 import { getFlagSyncClient } from "~sdk/utils";
 import { DecoratedFsClient } from "~sdk/types";

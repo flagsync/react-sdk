@@ -6,8 +6,8 @@ settings:
 
 dependencies:
   '@flagsync/js-sdk':
-    specifier: ^0.4.1-alpha.1
-    version: 0.4.1-alpha.1
+    specifier: ^0.4.1-alpha.2
+    version: 0.4.1-alpha.2
 
 devDependencies:
   '@trivago/prettier-plugin-sort-imports':
@@ -638,8 +638,8 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@flagsync/js-sdk@0.4.1-alpha.1:
-    resolution: {integrity: sha512-Aew+IsX0tRuwyai1Zah3JD1ivqf8FcXq7hIBt3T3HKiU4Tbs2Y+e6u/8+JYMTI+mlVsHf9MIzpKDv6PTDNJ5nQ==}
+  /@flagsync/js-sdk@0.4.1-alpha.2:
+    resolution: {integrity: sha512-kRPm4+QcFOeQvY5pr1Pai+rhsZTVvdk34XfrlP24kbbO6Ivsy6jW9eFtYoop/6UtrB0mqVvES5oK0xiKK/fU3g==}
     engines: {node: '>=16', npm: '>=6'}
     dependencies:
       axios: 1.7.2
