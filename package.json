@@ -1,6 +1,6 @@
 {
   "name": "@flagsync/react-sdk",
-  "version": "0.3.1",
+  "version": "0.3.2-alpha.0",
   "description": "FlagSync SDK for React",
   "author": "Mike Chabot",
   "license": "Apache-2.0",
