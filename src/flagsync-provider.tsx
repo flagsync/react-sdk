@@ -13,9 +13,11 @@ const FlagSyncContext = createContext<FlagProviderContextValue | null>(null);
 export const FlagSyncProvider = ({
   children,
   config,
+  waitForReady = false,
 }: {
   children: ReactNode;
   config: FsConfig;
+  waitForReady?: boolean;
 }) => {
   const clientRef = useRef<ReturnType<typeof getFlagSyncClient> | null>(null);
   const [_, setMounted] = useState(false);
@@ -37,9 +39,10 @@ export const FlagSyncProvider = ({
     };
   }, []);
 
+
   return (
     <FlagSyncContext.Provider value={{ client: clientRef.current }}>
-      {children}
+      {waitForReady && !clientRef.current?.isReady ? null : children}
     </FlagSyncContext.Provider>
   );
 };
