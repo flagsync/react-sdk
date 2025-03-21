@@ -3,6 +3,7 @@ import type { FsConfig } from '@flagsync/js-sdk';
 
 import { getFlagSyncClient } from "~sdk/utils";
 import { DecoratedFsClient } from "~sdk/types";
+import { ProviderChildren } from './provider-children';
 
 export interface FlagProviderContextValue {
   client: DecoratedFsClient;
@@ -42,7 +43,9 @@ export const FlagSyncProvider = ({
 
   return (
     <FlagSyncContext.Provider value={{ client: clientRef.current }}>
-      {waitForReady && !clientRef.current?.isReady ? null : children}
+       <ProviderChildren waitForReady={waitForReady}>
+        {children}
+      </ProviderChildren>    
     </FlagSyncContext.Provider>
   );
 };
