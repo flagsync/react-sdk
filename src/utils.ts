@@ -1,4 +1,4 @@
-import { FlagSyncFactory, FsEvent } from '@flagsync/js-sdk';
+import { FlagSyncFactory, FsErrorEvent, FsEvent } from '@flagsync/js-sdk';
 import type { FsConfig } from '@flagsync/js-sdk';
 
 import { DecoratedFsClient } from '~sdk/types';
@@ -16,6 +16,7 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
   client.lastUpdated = 0;
   client.isReady = false;
   client.isReadyFromStore = false;
+  client.isError = false;
 
   function setLastUpdated() {
     const now = Date.now();
@@ -34,9 +35,16 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
     setLastUpdated();
   }
 
+  function onError(error: FsErrorEvent) {
+    client.isError = true;
+    console.error(`FlagSync: SDK initialization error (type: ${error.type})`);
+    console.error(error.error);
+  }
+
   client.on(FsEvent.SDK_UPDATE, setLastUpdated);
   client.on(FsEvent.SDK_READY, onReady);
   client.on(FsEvent.SDK_READY_FROM_STORE, onReadyFromStore);
+  client.on(FsEvent.ERROR, onError);
 
   return client;
 }
