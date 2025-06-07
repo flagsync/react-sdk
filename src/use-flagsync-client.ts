@@ -27,11 +27,13 @@ export function useFlagSyncClient(): DecoratedFsClient {
     client.on(FsEvent.SDK_UPDATE, onUpdate);
     client.once(FsEvent.SDK_READY, onUpdate);
     client.once(FsEvent.SDK_READY_FROM_STORE, onUpdate);
+    client.once(FsEvent.ERROR, onUpdate);
 
     return () => {
       client.off(FsEvent.SDK_UPDATE, onUpdate);
       client.off(FsEvent.SDK_READY, onUpdate);
       client.off(FsEvent.SDK_READY_FROM_STORE, onUpdate);
+      client.off(FsEvent.ERROR, onUpdate);
     };
   }, [client]);
 
