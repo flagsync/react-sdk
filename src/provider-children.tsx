@@ -12,5 +12,6 @@ export const ProviderChildren = ({
   waitForReady,
 }: ProviderChildrenProps) => {
   const client = useFlagSyncClient();
+  if (client.isError) return children;
   return waitForReady && !client.isReady ? null : children;
 };

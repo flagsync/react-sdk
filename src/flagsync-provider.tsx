@@ -40,12 +40,11 @@ export const FlagSyncProvider = ({
     };
   }, []);
 
-
   return (
     <FlagSyncContext.Provider value={{ client: clientRef.current }}>
        <ProviderChildren waitForReady={waitForReady}>
         {children}
-      </ProviderChildren>    
+      </ProviderChildren>
     </FlagSyncContext.Provider>
   );
 };
