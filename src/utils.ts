@@ -27,6 +27,7 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
 
   function onReady() {
     client.isReady = true;
+    client.isReadyFromStore = true;
     setLastUpdated();
   }
 
