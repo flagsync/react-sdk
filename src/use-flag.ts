@@ -5,6 +5,7 @@ import { useFlagSyncClient } from '~sdk/use-flagsync-client';
 export type UseFlagValue<T> = T | 'control';
 
 export type UseFlag<T> = {
+  key: string;
   value: UseFlagValue<T>;
   isReady: boolean;
   isReadyFromStore: boolean;
@@ -20,6 +21,7 @@ export function useFlag<T>(flagKey: string, defaultValue?: T): UseFlag<T> {
 
   return useMemo<UseFlag<T>>(() => {
     return {
+      key: flagKey,
       value: client.flag(flagKey, defaultValue),
       isReady: client.isReady,
       isReadyFromStore: client.isReadyFromStore,
