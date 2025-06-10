@@ -43,5 +43,9 @@ export function useTrack(eventKey?: string) {
       client.track(eventKey, value, properties);
   }
 
-  return client.track;
+  return (
+    eventKey: string,
+    value?: number | null | undefined,
+    properties?: Record<string, unknown>,
+  ) => client.track(eventKey, value, properties);
 }
