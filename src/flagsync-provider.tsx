@@ -1,4 +1,6 @@
 import React, { useEffect, createContext, useContext, ReactNode, useRef, useState } from 'react';
+import deepEqual from 'fast-deep-equal';
+
 import type { FsConfig } from '@flagsync/js-sdk';
 
 import { getFlagSyncClient } from "~sdk/utils";
@@ -25,17 +27,13 @@ export const FlagSyncProvider = ({
   const [, forceUpdate] = useState(0);
 
   useEffect(() => {
-    const configChanged =
-      JSON.stringify(configRef.current) !== JSON.stringify(config);
+    const shouldReinit = !deepEqual(configRef.current, config);
 
-    if (!clientRef.current || configChanged) {
-      if (clientRef.current) {
-        clientRef.current.kill();
-      }
-
+    if (shouldReinit) {
+      clientRef.current?.kill();
       clientRef.current = getFlagSyncClient(config);
       configRef.current = config;
-      forceUpdate((n) => n + 1);
+      forceUpdate((x) => x + 1);
     }
 
     return () => {
