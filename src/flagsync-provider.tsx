@@ -27,7 +27,6 @@ export const FlagSyncProvider = ({
     clientRef.current = getFlagSyncClient(config);
   }
 
-
   useEffect(() => {
     if (clientRef.current === null) {
       clientRef.current = getFlagSyncClient(config);
