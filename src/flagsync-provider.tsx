@@ -27,20 +27,20 @@ export const FlagSyncProvider = ({
   const [, forceUpdate] = useState(0);
 
   useEffect(() => {
-    const shouldReinit = !deepEqual(configRef.current, config);
-
-    if (shouldReinit) {
+    if (!deepEqual(configRef.current, config)) {
       clientRef.current?.kill();
       clientRef.current = getFlagSyncClient(config);
       configRef.current = config;
       forceUpdate((x) => x + 1);
     }
+  }, [config]);
 
+  useEffect(() => {
     return () => {
       clientRef.current?.kill();
       clientRef.current = null;
     };
-  }, [config]);
+  }, []);
 
   if (!clientRef.current) {
     clientRef.current = getFlagSyncClient(config);
