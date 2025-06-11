@@ -20,24 +20,34 @@ export const FlagSyncProvider = ({
   config: FsConfig;
   waitForReady?: boolean;
 }) => {
+  const configRef = useRef<FsConfig | null>(null);
   const clientRef = useRef<ReturnType<typeof getFlagSyncClient> | null>(null);
-  const [_, setMounted] = useState(false);
-
-  if (clientRef.current === null) {
-    clientRef.current = getFlagSyncClient(config);
-  }
+  const [, forceUpdate] = useState(0);
 
   useEffect(() => {
-    if (clientRef.current === null) {
+    const configChanged =
+      JSON.stringify(configRef.current) !== JSON.stringify(config);
+
+    if (!clientRef.current || configChanged) {
+      if (clientRef.current) {
+        clientRef.current.kill();
+      }
+
       clientRef.current = getFlagSyncClient(config);
-      setMounted((prev) => !prev);
+      configRef.current = config;
+      forceUpdate((n) => n + 1);
     }
 
     return () => {
       clientRef.current?.kill();
       clientRef.current = null;
     };
-  }, []);
+  }, [config]);
+
+  if (!clientRef.current) {
+    clientRef.current = getFlagSyncClient(config);
+    configRef.current = config;
+  }
 
   return (
     <FlagSyncContext.Provider value={{ client: clientRef.current }}>
