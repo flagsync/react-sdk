@@ -16,6 +16,10 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
 
     const client = factory.client() as DecoratedFsClient;
 
+    client.waitForReadyCanThrow().catch((err) => {
+      return createMockClient(err);
+    });
+
     client.lastUpdated = 0;
     client.isReady = false;
     client.isReadyFromStore = false;
