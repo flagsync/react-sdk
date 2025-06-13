@@ -1,8 +1,8 @@
 import { FlagSyncFactory, FsErrorEvent, FsEvent } from '@flagsync/js-sdk';
 import type { FsConfig } from '@flagsync/js-sdk';
 
-import { createMockClient } from '~sdk/create-mock-client';
-import { DecoratedFsClient } from '~sdk/types';
+import { createMockClient } from './create-mock-client';
+import { DecoratedFsClient } from './types';
 
 export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
   try {

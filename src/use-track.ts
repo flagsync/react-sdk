@@ -1,4 +1,4 @@
-import { useFlagSyncProviderContext } from '~sdk/flagsync-provider';
+import { useFlagSyncProviderContext } from './flagsync-provider';
 
 export type TrackFunction = (
   eventKey: string,

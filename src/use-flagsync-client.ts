@@ -1,8 +1,8 @@
 import { FsEvent } from '@flagsync/js-sdk';
 import { useEffect, useState } from 'react';
 
-import { useFlagSyncProviderContext } from '~sdk/flagsync-provider';
-import type { DecoratedFsClient } from '~sdk/types';
+import { useFlagSyncProviderContext } from './flagsync-provider';
+import type { DecoratedFsClient } from './types';
 
 /**
  * Hook to get the FlagSync client from the context. This hook is guaranteed to

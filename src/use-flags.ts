@@ -1,7 +1,7 @@
 import type { FsFlagSet } from '@flagsync/js-sdk';
 import { useMemo } from 'react';
 
-import { useFlagSyncClient } from '~sdk/use-flagsync-client';
+import { useFlagSyncClient } from './use-flagsync-client';
 
 export type UseFlags = {
   flags: FsFlagSet;

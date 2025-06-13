@@ -1,7 +1,7 @@
 import type { FsFlagSet } from '@flagsync/js-sdk';
 import { ReactNode, useMemo } from 'react';
 
-import { useFlags } from '~sdk/use-flags';
+import { useFlags } from './use-flags';
 
 export type FlagSyncFlagProps = {
   defaultValues?: FsFlagSet;

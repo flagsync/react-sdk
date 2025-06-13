@@ -31,9 +31,6 @@
     "moduleResolution": "node",
     "module": "ES2015",
     "outDir": "dist",
-    "sourceMap": true,
-    "paths": {
-      "~sdk/*": ["src/*"],
-    }
+    "sourceMap": true
   }
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, createContext, useContext, ReactNode, useRef, useState } from 'react';
 import type { FsConfig } from '@flagsync/js-sdk';
 
-import { getFlagSyncClient } from "~sdk/utils";
-import { DecoratedFsClient } from "~sdk/types";
+import { getFlagSyncClient } from "./utils";
+import { DecoratedFsClient } from "./types";
 import { ProviderChildren } from './provider-children';
 
 export interface FlagProviderContextValue {

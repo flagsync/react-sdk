@@ -1,6 +1,6 @@
 import type { FsEventType, FsEventTypePayload } from '@flagsync/js-sdk';
 
-import type { DecoratedFsClient } from '~sdk/types';
+import type { DecoratedFsClient } from './types';
 
 type Callback<T extends FsEventType> = (payload: FsEventTypePayload[T]) => void;
 
