@@ -42,7 +42,7 @@ export function getFlagSyncClient(config: FsConfig): DecoratedFsClient {
     function onError(error: FsErrorEvent) {
       client.isError = true;
       console.error(`FlagSync: SDK initialization error (type: ${error.type})`);
-      console.error(error.error);
+      setLastUpdated();
     }
 
     client.on(FsEvent.SDK_UPDATE, setLastUpdated);
