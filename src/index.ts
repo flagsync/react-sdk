@@ -1,5 +1,3 @@
-export { FlagSyncFlag } from './FlagSyncFlag';
-export { FlagSyncFlags } from './FlagSyncFlags';
 export { useFlag } from './use-flag';
 export { useFlags } from './use-flags';
 export { useTrack } from './use-track';
@@ -16,6 +14,10 @@ export type {
   FsConfig,
   FsFlagValue,
   LogLevel,
+  FeatureFlags,
+  NoExplicitReturnType,
+  IsFeatureFlagsEmpty,
+  FlagReturnType,
 } from '@flagsync/js-sdk';
 
 export { SyncType, StorageType, FsEvent } from '@flagsync/js-sdk';

@@ -1,12 +1,20 @@
+import {
+  FeatureFlags,
+  FlagReturnType,
+  IsFeatureFlagsEmpty,
+  NoExplicitReturnType,
+} from '@flagsync/js-sdk';
 import { useMemo } from 'react';
 
 import { useFlagSyncClient } from './use-flagsync-client';
 
-export type UseFlagValue<T> = T | 'control';
-
-export type UseFlag<T> = {
-  key: string;
-  value: UseFlagValue<T>;
+export type UseFlag<TReturn, TKey extends string = string> = {
+  key: IsFeatureFlagsEmpty<FeatureFlags> extends true
+    ? TKey
+    :
+        | (TKey extends keyof FeatureFlags ? TKey : never)
+        | (keyof FeatureFlags extends never ? never : keyof FeatureFlags);
+  value: FlagReturnType<TReturn, TKey, FeatureFlags>;
   isReady: boolean;
   isReadyFromStore: boolean;
 };
@@ -16,10 +24,21 @@ export type UseFlag<T> = {
  * @param flagKey
  * @param defaultValue
  */
-export function useFlag<T>(flagKey: string, defaultValue?: T): UseFlag<T> {
+export function useFlag<
+  TReturn = NoExplicitReturnType,
+  TKey extends string = string,
+>(
+  flagKey: IsFeatureFlagsEmpty<FeatureFlags> extends true
+    ? TKey
+    :
+        | (TKey extends keyof FeatureFlags ? TKey : never)
+        | (keyof FeatureFlags extends never ? never : keyof FeatureFlags),
+
+  defaultValue?: FlagReturnType<TReturn, TKey, FeatureFlags>,
+) {
   const client = useFlagSyncClient();
 
-  return useMemo<UseFlag<T>>(() => {
+  return useMemo<UseFlag<TReturn, TKey>>(() => {
     return {
       key: flagKey,
       value: client.flag(flagKey, defaultValue),

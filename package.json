@@ -13,6 +13,12 @@
   "types": "dist/legacy/index.d.ts",
   "main": "dist/legacy/index.cjs",
   "module": "dist/legacy/index.js",
+  "scripts": {
+    "build": "tsup",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "test": "vitest"
+  },
   "exports": {
     ".": {
       "import": {
@@ -35,18 +41,12 @@
     "node": ">=16",
     "npm": ">=6"
   },
-  "scripts": {
-    "build": "tsup",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "lint": "eslint \"src/**/*.ts\" --fix",
-    "test": "vitest"
-  },
   "peerDependencies": {
     "react": ">=16.3.0",
     "react-dom": ">=16.3.0"
   },
   "dependencies": {
-    "@flagsync/js-sdk": "^0.5.9"
+    "@flagsync/js-sdk": "^0.6.2"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
