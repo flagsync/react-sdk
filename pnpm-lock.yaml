@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@flagsync/js-sdk':
-        specifier: ^0.6.2
-        version: 0.6.2
+        specifier: ^0.6.3
+        version: 0.6.3
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: ^4.3.0
@@ -441,8 +441,8 @@ packages:
     resolution: {integrity: sha512-d9zaMRSTIKDLhctzH12MtXvJKSSUhaHcjV+2Z+GK+EEY7XKpP5yR4x+N3TAcHTcu963nIr+TMcCb4DBCYX1z6Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
 
-  '@flagsync/js-sdk@0.6.2':
-    resolution: {integrity: sha512-gWst9Pvz9UrdU+NKfedv2h0qjhGHJKt1HJbKQ2P0phTrsKLs46p/WamQWALz4CJETZ9n7maLOTYmwEZ8PI32nQ==}
+  '@flagsync/js-sdk@0.6.3':
+    resolution: {integrity: sha512-sPej7URDnAaIBvXG/RPSxTJat92cwBIEO3OOKlr4j+PbeI/qP/ivTmoeq1tCXEK1fJbsO1DWS5b9E12TljLsvw==}
     engines: {node: '>=16', npm: '>=6'}
 
   '@humanwhocodes/config-array@0.13.0':
@@ -2066,7 +2066,7 @@ snapshots:
 
   '@eslint/js@8.57.1': {}
 
-  '@flagsync/js-sdk@0.6.2':
+  '@flagsync/js-sdk@0.6.3':
     dependencies:
       axios: 1.11.0
       deepmerge: 4.3.1
